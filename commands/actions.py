@@ -53,10 +53,13 @@ def executar_comando(comando):
         pesquisar_google(termo)
 
     elif "encerrar" in comando:
-        falar("Encerrando Jarvis.")
+        falar("Encerrando DEX.")
         return False
 
+    
     else:
-        falar("Comando nao reconhecido.")
+        print(f"Enviando para o Gemini: {comando}")
+        resposta_ia = responder_pergunta(comando)
+        falar(resposta_ia)
 
     return True

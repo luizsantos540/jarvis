@@ -2,23 +2,24 @@ from voice.speech import falar
 from voice.listener import ouvir
 from commands.actions import executar_comando
 
-
-falar("Jarvis iniciada com sucesso.")
+falar("DEX iniciado. Pode falar.")
 
 ativa = True
 
-
 while ativa:
-
+    
     comando = ouvir()
 
     if not comando:
         continue
 
-    comando = comando.lower()
+    comando = comando.lower().strip()
 
-    if "jarvis" in comando:
+    
+    if "desligar assistente" in comando or "encerrar" in comando:
+        falar("Desligando os sistemas. Até mais.")
+        ativa = False
+        break
 
-        comando = comando.replace("jarvis", "").strip()
-
-        ativa = executar_comando(comando)
+    
+    ativa = executar_comando(comando)
